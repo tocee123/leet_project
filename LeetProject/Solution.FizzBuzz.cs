@@ -8,7 +8,7 @@
         [InlineData(15, new[] { "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz" })]
         public void FizzBuzzTests(int range, IEnumerable<string> expected)
         {
-            _outputHelper.WriteLine(range % 5 == 0 ? "Fizz" + (range % 5 == 0 ? "Buzz" : "") : range.ToString());
+            _output.WriteLine(range % 5 == 0 ? "Fizz" + (range % 5 == 0 ? "Buzz" : "") : range.ToString());
 
             FizzBuzz2(range).Should().BeEquivalentTo(expected);
         }

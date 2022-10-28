@@ -11,7 +11,7 @@
 
             foreach (var i in result)
             {
-                output.WriteLine(i.ToString());
+                _output.WriteLine(i.ToString());
             }
         }
 

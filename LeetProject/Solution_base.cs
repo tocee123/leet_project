@@ -2,10 +2,10 @@
 {
     public partial class Solution
     {
-        private readonly ITestOutputHelper output;
+        private readonly ITestOutputHelper _output;
         public Solution(ITestOutputHelper output)
         {
-            this.output = output;
+            _output = output;
         }
     }
 }

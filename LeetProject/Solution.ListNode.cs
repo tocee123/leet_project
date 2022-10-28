@@ -58,11 +58,11 @@
 
             while (true)
             {
-                output.WriteLine(last.val.ToString());
+                _output.WriteLine(last.val.ToString());
                 last = GetLast(head, last);
                 if (last == head)
                 {
-                    output.WriteLine(last.val.ToString());
+                    _output.WriteLine(last.val.ToString());
                     break;
                 }
             }
