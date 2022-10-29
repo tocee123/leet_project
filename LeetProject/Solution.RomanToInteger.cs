@@ -15,12 +15,12 @@
 
         [InlineData("asdbe(sadnj(asdfnkdf){kjsfmk}[asdk][asda[asdas]]as32d)", true)]
         [InlineData("(}", false)]
-        public void RomanToIntegerTests(string input, bool expected)
+        public void ValidParenthesesTests(string input, bool expected)
         {
-            RomanToInteger(input).Should().Be(expected);
+            ValidParentheses(input).Should().Be(expected);
         }
 
-        public bool RomanToInteger(string s)
+        public bool ValidParentheses(string s)
         {
             var isValid = true;
             var parentheses = "([{)]}";
