@@ -2,147 +2,29 @@
 {
     public partial class Solution
     {
-        [Fact]
-        public void Test()
+        [Theory]
+        [InlineData(new[] { 1, 7, 3, 6, 5, 6 }, 3)]
+        [InlineData(new[] { 1, 2, 3 }, -1)]
+        [InlineData(new[] { 2, 1, -1 }, 0)]
+        public void PivotIndexTests(int[] input, int expected)
         {
-            var linkedList = new LinkedList<int>();
-            linkedList.AddLast(1);
-            linkedList.AddLast(2);
-            linkedList.AddLast(1);
-
-            var result = true;
-            while (linkedList.Count > 0)
-            {
-                result = linkedList.First.Value == linkedList.Last.Value;
-                if (!result)
-                {
-                    break;
-                }
-                linkedList.RemoveFirst();
-                if (linkedList.Count != 0)
-                {
-                    linkedList.RemoveLast();
-                }
-            }
-
-            result.Should().BeTrue();
+            PivotIndex(input).Should().Be(expected);
         }
 
-        ListNode GetLast(ListNode head, ListNode last = null)
+        public int PivotIndex(int[] nums)
         {
-            while (head.next != last)
+            var pivotIndex = -1;
+            for (int i = 0; i < nums.Length; i++)
             {
-                head = head.next;
-            }
-            return head;
-        }
-
-        [Fact]
-        public void WriteOut()
-        {
-            var head = new ListNode(1);
-            head = new ListNode(2, head);
-            head = new ListNode(3, head);
-            head = new ListNode(4, head);
-
-            var result = true;
-            var loop = head;
-
-            //while (loop != null)
-            //{
-            //    output.WriteLine(loop.val.ToString());
-            //    loop = loop.next;
-            //}
-
-            var last = GetLast(head, null);
-
-            while (true)
-            {
-                _output.WriteLine(last.val.ToString());
-                last = GetLast(head, last);
-                if (last == head)
+                var leftSum = nums[..i].Sum();
+                var rightSum = nums[i..].Sum();
+                if (leftSum == rightSum)
                 {
-                    _output.WriteLine(last.val.ToString());
+                    pivotIndex = i;
                     break;
                 }
             }
-
-
-            //var lastPrevious = head;
-            //while (last != head)
-            //{
-
-            //}
-
-
-        }
-        [Fact]
-        public void Test1()
-        {
-            var head = new ListNode(1);
-            head = new ListNode(2, head);
-            head = new ListNode(2, head);
-            head = new ListNode(1, head);
-
-            var result = true;
-
-            var last = head;
-
-            while (last.next != null)
-            {
-                last = last.next;
-            }
-
-            while (head.next != null)
-            {
-                //get lastPrevious
-
-                var lastPrevious = head;
-
-                while (lastPrevious.next != last)
-                {
-                    lastPrevious = lastPrevious.next;
-                }
-                result = head.val == last.val;
-                if (!result)
-                    break;
-                head = head.next;
-                last = lastPrevious;
-            }
-
-            result.Should().BeTrue();
-        }
-
-        public bool IsPalindrome(ListNode head)
-        {
-            //var result = true;
-            //var first = head.First;
-            //var last = head.Last;
-
-            //while (first != last)
-            //{
-            //    result = first.Value == last.Value;
-            //    if (!result)
-            //    {
-            //        break;
-            //    }
-            //    first = first.Next;
-            //    last = last.Previous;
-            //}
-            //return result;
-
-            return true;
-        }
-
-        public class ListNode
-        {
-            public int val;
-            public ListNode next;
-            public ListNode(int val = 0, ListNode next = null)
-            {
-                this.val = val;
-                this.next = next;
-            }
+            return pivotIndex;
         }
     }
 }
