@@ -5,7 +5,7 @@
         [Theory]
         [InlineData("abccbaacz", 'c')]
         [InlineData("abcdd", 'd')]
-        public void TEst(string input, char expected)
+        public void RepeatedCharacterTests(string input, char expected)
         {
             RepeatedCharacter(input).Should().Be(expected);
         }

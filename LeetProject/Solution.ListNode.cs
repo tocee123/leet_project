@@ -3,7 +3,7 @@
     public partial class Solution
     {
         [Fact]
-        public void Test()
+        public void ListNodeTest()
         {
             var linkedList = new LinkedList<int>();
             linkedList.AddLast(1);
