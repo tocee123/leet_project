@@ -15,12 +15,12 @@
 
         [InlineData("asdbe(sadnj(asdfnkdf){kjsfmk}[asdk][asda[asdas]]as32d)", true)]
         [InlineData("(}", false)]
-        public void RomanToIntegerTests(string input, bool expected)
+        public void LongestCommonPrefixTests(string input, bool expected)
         {
-            RomanToInteger(input).Should().Be(expected);
+            LongestCommonPrefix(input).Should().Be(expected);
         }
 
-        public bool RomanToInteger(string s)
+        public bool LongestCommonPrefix(string s)
         {
             var isValid = true;
             var parentheses = "([{)]}";

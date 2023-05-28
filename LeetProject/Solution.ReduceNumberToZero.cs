@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace LeetProject
+﻿namespace LeetProject
 {
     public partial class Solution
     {
